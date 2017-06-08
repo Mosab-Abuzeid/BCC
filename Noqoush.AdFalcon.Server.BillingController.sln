@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noqoush.AdFalcon.Server.BillingController.Server", "Noqoush.AdFalcon.Server.BillingController.Server\Noqoush.AdFalcon.Server.BillingController.Server.csproj", "{F44923C6-66D3-4921-8F87-EA7313F429ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillingController.Test", "BillingController.Test\BillingController.Test.csproj", "{E21F6555-5C62-4EF6-A6FD-DD7F72B31D82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noqoush.AdFalcon.Server.BillingController.Client", "Noqoush.AdFalcon.Server.BillingController.Client\Noqoush.AdFalcon.Server.BillingController.Client.csproj", "{A97B5704-B70B-4289-B783-9ABF3AF7D4C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F44923C6-66D3-4921-8F87-EA7313F429ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F44923C6-66D3-4921-8F87-EA7313F429ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F44923C6-66D3-4921-8F87-EA7313F429ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F44923C6-66D3-4921-8F87-EA7313F429ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E21F6555-5C62-4EF6-A6FD-DD7F72B31D82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E21F6555-5C62-4EF6-A6FD-DD7F72B31D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E21F6555-5C62-4EF6-A6FD-DD7F72B31D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E21F6555-5C62-4EF6-A6FD-DD7F72B31D82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A97B5704-B70B-4289-B783-9ABF3AF7D4C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A97B5704-B70B-4289-B783-9ABF3AF7D4C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A97B5704-B70B-4289-B783-9ABF3AF7D4C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A97B5704-B70B-4289-B783-9ABF3AF7D4C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

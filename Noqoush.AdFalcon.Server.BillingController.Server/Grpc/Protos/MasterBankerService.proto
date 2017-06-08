@@ -1,0 +1,88 @@
+﻿syntax = "proto3";
+
+import "Protos/wrappers.proto";
+
+option csharp_namespace = "Noqoush.AdFalcon.Banker.Common";
+
+service MasterBankerService {
+	    rpc SyncAll(SyncAllRequest) returns (SyncAllResponse) {}
+
+        rpc CreateOrUpdateFundAccount(CreateOrUpdateFundAccountRequest) returns (EmptyResponse) {}
+        rpc CreateOrUpdateBudgetAccount(CreateOrUpdateBudgetAccountRequest) returns (EmptyResponse) {}
+        rpc ChangeFund(ChangeFundRequest) returns (EmptyResponse) {}
+        rpc CloseAccount(CloseAccountRequest) returns (EmptyResponse) {}
+		rpc GetFundBalance(GetFundBalanceRequest) returns (GetFundBalanceResponse) {}
+}
+
+enum BudgetPacingPolicies {
+	FastSpend = 0;
+	EvenDistribution = 1;
+}
+
+enum AccountStatus {
+	Active = 0;
+	Closing_PreSync = 1;
+	Closing_PostSync = 2;
+	Evicted = 3;
+}
+
+message GetFundBalanceRequest {
+	string key = 1;
+}
+
+message GetFundBalanceResponse {
+	google.protobuf.Int64Value balance = 1;
+}
+
+message EmptyResponse {}
+
+message SpendAccountDTO_Master {
+	string gKey = 1;
+	google.protobuf.Int64Value gSpent = 2;
+	google.protobuf.Int64Value gBalanceCeiling = 3;
+	google.protobuf.Int64Value gNetAllocated = 4;
+    AccountStatus gStatus = 5;
+	google.protobuf.Int64Value gBudgetExpiryEpoch = 6;
+}
+
+message SpendAccountDTO_Local {
+	string gKey = 1;
+	AccountStatus gStatus = 2;
+	google.protobuf.Int64Value gCommitmentsRetired = 3;
+	google.protobuf.Int64Value gCommitmentsMade = 4;
+	google.protobuf.Int64Value gSpent = 5;
+	google.protobuf.Int64Value gBalance = 6;
+	google.protobuf.Int64Value gOverCeiling = 7;
+	google.protobuf.Int64Value gFinalCloseEpoch = 8;
+}
+
+message SyncAllRequest {
+	string localBanker = 1;
+	repeated SpendAccountDTO_Local localAccounts = 2;
+}
+message SyncAllResponse {
+	repeated SpendAccountDTO_Master masterAccounts = 1;
+}
+
+message CreateOrUpdateFundAccountRequest {
+	string accountKey = 1;
+	google.protobuf.Int64Value extraFund = 2;
+}
+
+message CreateOrUpdateBudgetAccountRequest {
+	string accountKey = 1;
+    google.protobuf.Int64Value minUnitPrice = 2;
+    google.protobuf.Int64Value newBudget  = 3;
+    google.protobuf.Int64Value budgetExpiryEpoch = 4;
+	google.protobuf.Int64Value previousSpent = 5;
+	BudgetPacingPolicies pacingPolicy = 6;
+}
+
+message ChangeFundRequest {
+	string fundKey = 1;
+	google.protobuf.Int64Value newFund = 2;
+}
+
+message CloseAccountRequest {
+	string accountKey = 1;
+}

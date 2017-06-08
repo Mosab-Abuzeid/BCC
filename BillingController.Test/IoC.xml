@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+
+  <facilities></facilities>
+  <components>
+    <component  id="ConfigurationManager"
+               service="Noqoush.Framework.ConfigurationSetting.IConfigurationManager, Noqoush.Framework"
+               type="Noqoush.Framework.ConfigurationSetting.ConfigurationManager, Noqoush.Framework"
+               lifestyle="singleton">
+    </component>
+    <component id="CallContext"
+              service="Noqoush.Framework.ICallContext, Noqoush.Framework"
+              type="Noqoush.Framework.ThreadCallContext, Noqoush.Framework"
+              lifestyle="singleton">
+    </component>
+    <component id="FrameworkBehaviorInvoker" 
+               service="Noqoush.Framework.Behaviors.BehaviorInvoker, Noqoush.Framework"
+               type="Noqoush.Framework.Behaviors.BehaviorInvoker, Noqoush.Framework"
+               lifestyle="singleton" />
+
+    <component id="ConfigurationManager"
+               service="Noqoush.Framework.ConfigurationSetting.IConfigurationManager, Noqoush.Framework"
+               type="Noqoush.Framework.ConfigurationSetting.ConfigurationManager, Noqoush.Framework"  
+               lifestyle="singleton">
+    </component>
+    <component id="ConfigurationService"
+               service="Noqoush.Framework.ConfigurationSetting.IConfigurationSettingService,Noqoush.Framework"
+               type="Noqoush.Framework.Infrastructure.Services.Configuration.ConfigurationSettingService, Noqoush.Framework.Infrastructure.Services"
+               lifestyle="singleton">
+    </component>
+    <component id="ResourceManager"
+               service="Noqoush.Framework.Resources.IResourceManager, Noqoush.Framework"
+               type="Noqoush.Framework.Resources.ResourceManager, Noqoush.Framework"
+               lifestyle="singleton">
+    </component>
+    <component id="ResourceService"
+               service="Noqoush.Framework.Resources.IResourceService, Noqoush.Framework"
+               type="Noqoush.Framework.Infrastructure.Services.Resources.ResourceService, Noqoush.Framework.Infrastructure.Services"  
+               lifestyle="singleton">
+    </component>
+    <component id="ResourceProviderFactory"
+               service="Noqoush.Framework.Resources.ResourceProvider.IResourceProviderFactory, Noqoush.Framework"
+               type="Noqoush.Framework.Resources.ResourceProvider.DBResourceProviderFactory, Noqoush.Framework"  
+               lifestyle="singleton">
+    </component>
+    <component id="ResourceProvider"
+               service="Noqoush.Framework.Resources.ResourceProvider.IResourceProvider, Noqoush.Framework"
+               type="Noqoush.Framework.Resources.ResourceProvider.DBResourceProvider, Noqoush.Framework"  
+               lifestyle="singleton">
+    </component>
+    <component id="DatabaseHelper"
+               service="Noqoush.Framework.Db.IDatabaseHelper,Noqoush.Framework "
+               type="Noqoush.Framework.Db.DatabaseHelper,Noqoush.Framework "
+               lifestyle="singleton">
+    </component>
+    <component id="CallContext"
+               service="Noqoush.Framework.ICallContext,Noqoush.Framework"
+               type=" Noqoush.Framework.ThreadCallContext,Noqoush.Framework "
+               lifestyle="singleton">
+    </component>
+    <component id="MemoryCache"
+               service="Noqoush.Framework.Caching.ICacheProviderFactory,Noqoush.Framework"
+               type="Noqoush.Framework.Caching.MemoryCaching.MemoryCacheProviderFactory,Noqoush.Framework" lifestyle="singleton">
+    </component>
+    <component id="BCRepository"
+              service="Noqoush.AdFalcon.Server.BillingController.Server.IBillingControllerRepository, Noqoush.AdFalcon.Server.BillingController.Server"
+              type="Noqoush.AdFalcon.Server.BillingController.Server.BillingControllerRepository, Noqoush.AdFalcon.Server.BillingController.Server"
+              lifestyle="singleton">
+    </component>
+    <component id="BCCache"
+             service="Noqoush.AdFalcon.Server.BillingController.Server.IBillingControllerCache, Noqoush.AdFalcon.Server.BillingController.Server"
+             type="Noqoush.AdFalcon.Server.BillingController.Server.BillingControllerCache, Noqoush.AdFalcon.Server.BillingController.Server"
+             lifestyle="singleton">
+    </component>
+    <component id="AppFabric"
+               service="Noqoush.Framework.Caching.ICacheProviderFactory,Noqoush.Framework"
+               type="Noqoush.Framework.Caching.MemoryCaching.MemoryCacheProviderFactory,Noqoush.Framework" 
+               lifestyle="singleton">
+    </component>
+  </components>
+</configuration>
