@@ -1,6 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Practices.EnterpriseLibrary.Data;
+using MySql.Data.MySqlClient;
 using Noqoush.AdFalcon.EventDTOs;
 using Noqoush.AdFalcon.Server.BillingController.Server.Models;
+using Noqoush.Framework;
 using Noqoush.Framework.DB;
 using Noqoush.Framework.Logging;
 using System;
@@ -37,7 +39,7 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server
             {
                 var paramters = new DBParameter[] {
                       new DBParameter($"@{Constants.AccountTrackInfos.AccountIDColumn}", accountID),
-                      new DBParameter($"@{Constants.AccountTrackInfos.AccountTypeColumn}", accountType)
+                      new DBParameter($"@{Constants.AccountTrackInfos.AccountTypeColumn}", (int)accountType)
                 };
                 var results = _dbHelper.ExecuteQuery(Constants.AccountTrackInfos.selectQueryTemplate, ConvertToAccountTrackInfo, _billingControllerDb, paramters);
                 var account = new AccountTrackInfo();
@@ -49,13 +51,17 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server
             {
                 throw new BillingControllerException($"Failed to get AccountSummaryInfo for account {accountID}", ex);
             }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         public void DeleteAccountTrackInfo(int accountID, AccountType accountType)
         {
             var paramters = new DBParameter[] {
                       new DBParameter($"@{Constants.AccountTrackInfos.AccountIDColumn}", accountID),
-                      new DBParameter($"@{Constants.AccountTrackInfos.AccountTypeColumn}", accountType)
+                      new DBParameter($"@{Constants.AccountTrackInfos.AccountTypeColumn}", (int)accountType)
                 };
             _dbHelper.ExecuteQuery(Constants.AccountTrackInfos.deleteQueryTemplate, _billingControllerDb, paramters);
         }

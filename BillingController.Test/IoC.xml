@@ -60,7 +60,8 @@
     </component>
     <component id="MemoryCache"
                service="Noqoush.Framework.Caching.ICacheProviderFactory,Noqoush.Framework"
-               type="Noqoush.Framework.Caching.MemoryCaching.MemoryCacheProviderFactory,Noqoush.Framework" lifestyle="singleton">
+               type="Noqoush.Framework.Caching.MemoryCaching.MemoryCacheProviderFactory,Noqoush.Framework" 
+               lifestyle="singleton">
     </component>
     <component id="BCRepository"
               service="Noqoush.AdFalcon.Server.BillingController.Server.IBillingControllerRepository, Noqoush.AdFalcon.Server.BillingController.Server"

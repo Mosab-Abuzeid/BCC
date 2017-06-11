@@ -36,7 +36,7 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server
                 var index = 0;
                 foreach (var col in billingAccountTableColumns)
                 {
-                    if (col == AccountIDColumn) continue;
+                    if (col == AccountIDColumn || col == AccountTypeColumn) continue;
                     onDuplicateValues[index] = $"{col} =  VALUES({col})";
                     index++;
                 }
@@ -89,7 +89,7 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server
 
             public readonly static string[] adgroupsTableColumns = { AdgroupIdColumn, CampaignIdColumn, EndDateColumn,
                                                                       BudgetColumn, DailyBudgetColumn, PacingColumn, MinimumUnitPriceColumn };
-            private readonly static string selectAccountIdQueryTemplate =  $@"Select {Campaigns.CampaignIdColumn} from {Campaigns.TableName} 
+            private readonly static string selectAccountIdQueryTemplate =  $@"Select {Campaigns.AccountIdColumn} from {Campaigns.TableName} 
                                                                              where {CampaignIdColumn} = {CampaignIdColumn}";
             public readonly static string selectSingleQueryTemplate = $@"Select ({selectAccountIdQueryTemplate}) as {AccountIdAlias}, 
                                                  {string.Join(",", adgroupsTableColumns)} from {TableName} where {AdgroupIdColumn} = @{AdgroupIdColumn}";
