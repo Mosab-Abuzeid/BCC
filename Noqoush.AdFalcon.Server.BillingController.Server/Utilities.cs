@@ -36,6 +36,7 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server
 
         public static Int64Value ToInt64Value(decimal value)
         {
+            if (value == 0) return null;
             return new Int64Value { Value = (long)(value * (decimal)1E6) };
         }
         public static decimal ToDecimal(Int64Value value)
@@ -51,24 +52,20 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server
 
         public static Int64Value ToInt64Value(DateTime value)
         {
-            return new Int64Value { Value = (long)(value - DateTime.UtcNow).TotalSeconds };
+            DateTimeOffset offset = new DateTimeOffset(value);
+            return new Int64Value { Value = offset.ToUnixTimeSeconds() };
         }
 
-        public static Int64Value ToInt64ValueEndOfDay(DateTime value)
+        public static Int64Value ToInt64ValueEndOfDay()
         {
-            return new Int64Value { Value = (long)(value - DateTime.UtcNow.Date.AddDays(1)).TotalSeconds };
+            DateTimeOffset offset = new DateTimeOffset(DateTime.UtcNow.Date.AddDays(1));
+            return new Int64Value { Value = offset.ToUnixTimeSeconds() };
         }
 
         public static Int64Value ToInt64Value(this DateTime? value)
         {
             if (!value.HasValue) return null;
             return ToInt64Value(value.Value);
-        }
-
-        public static Int64Value ToInt64ValueEndOfDay(DateTime? value)
-        {
-            if (!value.HasValue) return null;
-            return ToInt64ValueEndOfDay(value.Value);
         }
 
         public static string GetQueryValuesString(this AccountTrackInfo account)
