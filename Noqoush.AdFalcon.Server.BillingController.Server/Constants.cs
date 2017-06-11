@@ -66,10 +66,9 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server
             public const string BudgetColumn = "Budget";
             public const string DailyBudgetColumn = "DailyBudget";
             public const string PacingColumn = "Pacing";
-            public const string MinimumUnitPriceColumn = "MinimumUnitPrice";
 
             public readonly static string[] campaignsTableColumns = { AccountIdColumn, CampaignIdColumn, EndDateColumn,
-                                                                      BudgetColumn, DailyBudgetColumn, PacingColumn, MinimumUnitPriceColumn };
+                                                                      BudgetColumn, DailyBudgetColumn, PacingColumn };
             public readonly static string selectQueryTemplate = $@"Select {string.Join(",", campaignsTableColumns)} from
                                                                      {TableName} where {CampaignIdColumn} = @{CampaignIdColumn}";
         }
@@ -81,13 +80,12 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server
             public const string AccountIdAlias = "AccountId";
             public const string CampaignIdColumn = "CampaignId";
             public const string AdgroupIdColumn = "Id";
-            public const string EndDateColumn = "EndDate";
             public const string BudgetColumn = "Budget";
             public const string DailyBudgetColumn = "DailyBudget";
             public const string PacingColumn = "Pacing";
             public const string MinimumUnitPriceColumn = "MinimumUnitPrice";
 
-            public readonly static string[] adgroupsTableColumns = { AdgroupIdColumn, CampaignIdColumn, EndDateColumn,
+            public readonly static string[] adgroupsTableColumns = { AdgroupIdColumn, CampaignIdColumn,
                                                                       BudgetColumn, DailyBudgetColumn, PacingColumn, MinimumUnitPriceColumn };
             private readonly static string selectAccountIdQueryTemplate =  $@"Select {Campaigns.AccountIdColumn} from {Campaigns.TableName} 
                                                                              where {CampaignIdColumn} = {CampaignIdColumn}";

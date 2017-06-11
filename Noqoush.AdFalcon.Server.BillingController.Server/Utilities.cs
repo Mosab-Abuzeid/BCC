@@ -51,12 +51,12 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server
 
         public static Int64Value ToInt64Value(DateTime value)
         {
-            return new Int64Value { Value = (long)(DateTime.UtcNow - value).TotalSeconds };
+            return new Int64Value { Value = (long)(value - DateTime.UtcNow).TotalSeconds };
         }
 
         public static Int64Value ToInt64ValueEndOfDay(DateTime value)
         {
-            return new Int64Value { Value = (long)(DateTime.UtcNow.Date.AddDays(1) - value).TotalSeconds };
+            return new Int64Value { Value = (long)(value - DateTime.UtcNow.Date.AddDays(1)).TotalSeconds };
         }
 
         public static Int64Value ToInt64Value(this DateTime? value)

@@ -15,8 +15,6 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server.Models
         public decimal? Budget { get; set; }
         public decimal? DailyBudget { get; set; }
         public PacingPolicies Pacing { get; set; }
-        public decimal? MinimumUnitPrice { get; set; }
-
         public string GetAccountKey()
         {
             return $"{AccountId}:{Id}";

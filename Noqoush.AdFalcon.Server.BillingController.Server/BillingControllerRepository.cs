@@ -127,7 +127,7 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server
         }
         public Campaign GetCampaign(int campaignId)
         {
-            var paramters = new DBParameter[] { new DBParameter($"@{Constants.Campaigns.AccountIdColumn}", campaignId) };
+            var paramters = new DBParameter[] { new DBParameter($"@{Constants.Campaigns.CampaignIdColumn}", campaignId) };
             var accounts = _dbHelper.ExecuteQuery(Constants.Campaigns.selectQueryTemplate, ConvertToCampaign, _billingControllerDb, paramters);
             if (accounts == null || accounts.Count == 0)
                 return null;
@@ -142,7 +142,6 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server
                 EndDate = reader.SafeGetValue<DateTime?>(Constants.Campaigns.EndDateColumn),
                 Budget = reader.SafeGetValue<decimal?>(Constants.Campaigns.BudgetColumn),
                 DailyBudget = reader.SafeGetValue<decimal?>(Constants.Campaigns.DailyBudgetColumn),
-                MinimumUnitPrice = reader.SafeGetValue<decimal?>(Constants.Campaigns.MinimumUnitPriceColumn),
                 Pacing = reader.SafeGetValue<PacingPolicies>(Constants.Campaigns.PacingColumn)
             };
         }
@@ -164,10 +163,8 @@ namespace Noqoush.AdFalcon.Server.BillingController.Server
         {
             return new AdGroup
             {
-                AccountId = reader.SafeGetValue<int>(Constants.Adgroups.AccountIdAlias),
                 Id = reader.SafeGetValue<int>(Constants.Adgroups.CampaignIdColumn),
                 CampaignId = reader.SafeGetValue<int>(Constants.Adgroups.AdgroupIdColumn),
-                EndDate = reader.SafeGetValue<DateTime?>(Constants.Adgroups.EndDateColumn),
                 Budget = reader.SafeGetValue<decimal?>(Constants.Adgroups.BudgetColumn),
                 DailyBudget = reader.SafeGetValue<decimal?>(Constants.Adgroups.DailyBudgetColumn),
                 MinimumUnitPrice = reader.SafeGetValue<decimal?>(Constants.Adgroups.MinimumUnitPriceColumn),
